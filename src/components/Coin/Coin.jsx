@@ -16,21 +16,7 @@ export default class Coin extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
     }
-/*
-    componentDidMount() {
-        const callback = () => {
-            //set the state to a new random value
-            const randomPercentage = 0.995 + Math.random() * 0.01;
-
-            this.setState( function(oldState) {
-                return {
-                    price: oldState.price * randomPercentage
-                };
-            });
-        }
-        setInterval( callback, 1000 );
-    }
-    */
+    
     handleClick(event) {
         event.preventDefault();
         const randomPercentage = 0.995 + Math.random() * 0.01;
