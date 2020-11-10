@@ -10,29 +10,24 @@ const CoinRow = styled.td`
 export default class Coin extends Component {
     constructor(props) {
         super(props);
-        //this is the ONLY place that this.state should be used
-        this.state = {
-            price: this.props.price
-        }
         this.handleClick = this.handleClick.bind(this);
     }
-    
+
     handleClick(event) {
+        //prevents default action
         event.preventDefault();
-        const randomPercentage = 0.995 + Math.random() * 0.01;
-        this.setState( function(oldState) {
-            return {
-                price: oldState.price * randomPercentage
-            };
-        });
+        
+        this.props.handleRefresh(this.props.ticker);
+
     }
+    
     render() {
         return (
             <tr>
               <CoinRow>{this.props.name}</CoinRow>
               <CoinRow>{this.props.ticker}</CoinRow>
-              <CoinRow>${this.state.price}</CoinRow>
-              <CoinRow><button onClick={this.handleClick}>Refresh</button></CoinRow>
+              <CoinRow>${this.props.price}</CoinRow>
+              <CoinRow><button onClick={this.handleClick}> Refresh </button> </CoinRow>
             </tr>
         );
     }
