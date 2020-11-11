@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const CoinRow = styled.td`
+const Td = styled.td`
     border: 1px solid #cccccc;
     width: 25vh;
 `;
@@ -22,12 +22,16 @@ export default class Coin extends Component {
     }
     
     render() {
+        const toggleBalance = this.props.showBalance ?
+             <Td>{this.props.balance}</Td> : <Td></Td>;
+
         return (
             <tr>
-              <CoinRow>{this.props.name}</CoinRow>
-              <CoinRow>{this.props.ticker}</CoinRow>
-              <CoinRow>${this.props.price}</CoinRow>
-              <CoinRow><button onClick={this.handleClick}> Refresh </button> </CoinRow>
+              <Td>{this.props.name}</Td>
+              <Td>{this.props.ticker}</Td>
+              <Td>${this.props.price}</Td>
+              {toggleBalance}
+              <Td><button onClick={this.handleClick}> Refresh </button> </Td>
             </tr>
         );
     }
