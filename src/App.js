@@ -13,10 +13,9 @@ const Div = styled.div`
 `;
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+  state = {
       balance: 10000,
+      showBalance: true,
       coinData: [
         {
           name: 'Bitcoin',
@@ -48,14 +47,10 @@ class App extends React.Component {
           balance: 0.25,
           price: 298.99
         }
-      ],
-      showBalance: true
+      ]
     }
-    this.handleRefresh = this.handleRefresh.bind(this);
-    this.handleBalanceToggle = this.handleBalanceToggle.bind(this);
-  }
 
-  handleRefresh(valueChangeTicker) {
+  handleRefresh = (valueChangeTicker) => {
     const newCoinData = this.state.coinData.map(function( {ticker, name, balance, price} ) {
       let newPrice = price;
       if (valueChangeTicker === ticker) {
@@ -73,7 +68,7 @@ class App extends React.Component {
     this.setState({ coinData: newCoinData });
   }
 
-  handleBalanceToggle() {
+  handleBalanceToggle = () => {
     this.setState({ showBalance: !this.state.showBalance});
   }
 

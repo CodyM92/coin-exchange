@@ -8,12 +8,8 @@ const Td = styled.td`
 `;
 
 export default class Coin extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
 
-    handleClick(event) {
+    handleClick = (event) => {
         //prevents default action
         event.preventDefault();
         
@@ -22,15 +18,13 @@ export default class Coin extends Component {
     }
     
     render() {
-        const toggleBalance = this.props.showBalance ?
-             <Td>{this.props.balance}</Td> : <Td></Td>;
 
         return (
             <tr>
               <Td>{this.props.name}</Td>
               <Td>{this.props.ticker}</Td>
               <Td>${this.props.price}</Td>
-              {toggleBalance}
+              {this.props.showBalance ? <Td>{this.props.balance}</Td> : null}
               <Td><button onClick={this.handleClick}> Refresh </button> </Td>
             </tr>
         );

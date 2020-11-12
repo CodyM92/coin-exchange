@@ -9,17 +9,6 @@ const Section = styled.section`
 `;
 
 export default class AccountBalance extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-
-    handleClick(event) {
-        event.preventDefault();
-
-        this.props.handleBalanceToggle();
-        }
 
     render() {
         const buttonText = this.props.showBalance ? "Hide Balance" : "Show Balance";
@@ -30,7 +19,7 @@ export default class AccountBalance extends Component {
         return (
             <Section>
                 {toggleBalance}
-                <button onClick={this.handleClick}> {buttonText} </button>
+                <button onClick={this.props.handleBalanceToggle}> {buttonText} </button>
             </Section>
         );
     }

@@ -10,8 +10,6 @@ const Table = styled.table`
 
 export default class CoinList extends Component {
     render() {
-        const toggleBalance = this.props.showBalance ?
-        <th>Balance</th> : <th></th>;
 
         return (
             <Table>
@@ -20,7 +18,7 @@ export default class CoinList extends Component {
                     <th>Name</th>
                     <th>Ticker</th>
                     <th>Price</th>
-                    {toggleBalance}
+                    {this.props.showBalance ? <th>Balance</th> : null}
                     <th>Action</th>
                 </tr>
             </thead>
