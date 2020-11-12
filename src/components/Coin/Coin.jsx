@@ -13,7 +13,7 @@ export default class Coin extends Component {
         //prevents default action
         event.preventDefault();
         
-        this.props.handleRefresh(this.props.ticker);
+        this.props.handleRefresh(this.props.tickerId);
 
     }
     
